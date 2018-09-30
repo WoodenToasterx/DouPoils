@@ -9,4 +9,4 @@ app_lucky_number:
 
 app_menu_item:
     path: /menu
-    controller: App\Controller\MenuItemController::animals
+    controller: App\Controller\MenuItemController
