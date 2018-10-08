@@ -8,12 +8,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class MenuItemController extends AbstractController
 {
     /**
-     * @Route("/menu")
+     * @Route("/")
      */
 
     public function menu()
     {
-        return $this->render('accueil.html.twig'); 
+        return $this->render('accueil.html.twig');
 	}
 }
 ?>

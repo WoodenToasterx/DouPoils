@@ -1,12 +1,12 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+index:
+   path: /
+   controller: App\Controller\MenuItemController
 
 
 app_lucky_number:
     path: /lucky/number
     controller: App\Controller\LuckyController::number
 
-app_menu_item:
-    path: /menu
-    controller: App\Controller\MenuItemController
+# app_menu_item:
+#     path: /menu
+#     controller: App\Controller\MenuItemController
