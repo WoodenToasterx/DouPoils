@@ -10,15 +10,16 @@
 
     <body class="text-center" id="bodyLogin">
         <div class="form">
+        <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
         {{form_start(form) }}
             {{ form_errors(form) }}
-            <div class="level1">
-                {{ form_row(form.MemberMail) }}
+            <div class="level1" style="margin-bottom: 10px">
+                {{ form_widget(form.MemberMail, {'attr': {'class' : 'form-control', 'placeholder' : 'Email', 'type' : 'email' }}) }}
             </div>
-            <div class="level2">
-                {{ form_row(form.Password) }}
+            <div class="level2" style="margin-bottom: 10px">
+                {{ form_widget(form.Password, {'attr' : {'class' : 'form-control', 'placeholder' : 'Password', 'type' : 'password' }}) }}
             </div>
-        {{ form_end(form) }}
+        {{ form_end(form, {'attr' : { 'class' : 'btn btn-lg btn-primary btn-block' }}) }}
         </div>
     </body>
 </html>            		                            
