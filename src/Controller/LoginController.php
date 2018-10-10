@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\Session;
+
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -33,22 +35,34 @@ class LoginController extends AbstractController
         
         $form->handleRequest($request);
 
+        $session = new Session();
+
         if($form->isSubmitted() && $form->isValid())
         {
             $member = $form->getData();
 
-            $pdo = PDO::getInstance();
-            $req = $pdo->prepare("SELECT MEMBER_MAIL
-                                        ,MEMBER_PASSWORD
-                                        FROM doupoils.member
-                                WHERE MEMBER_MAIL = :MAIL");
-            $req->bindValue(':MAIL', $member->getMemberMail());
-            $req->execute();
+            try
+            {
+                $pdo = PDO::getInstance();
+                $req = $pdo->prepare('SELECT MEMBER_FIRSTNAME 
+                                            ,MEMBER_LASTNAME
+                                            ,MEMBER_MAIL
+                                            ,MEMBER_PASSWORD
+                                            FROM doupoils.member
+                                    WHERE MEMBER_MAIL = :MAIL');
 
-            $stmt = $req->fetch($pdo::FETCH_ASSOC);
+                $req->bindValue(':MAIL', $member->getMemberMail());
+                $req->execute();
+                $stmt = $req->fetch($pdo::FETCH_ASSOC);
+            }
+            catch(Exception $e)
+            {
+                var_dump($e);
+            }
 
             if(($member->getMemberMail() == $stmt['MEMBER_MAIL']) && ($member->getPassword() == $stmt['MEMBER_PASSWORD']))
             {
+                $session->set('name', $stmt['MEMBER_LASTNAME']);
                 return $this->redirectToRoute('memberSpace');
             }
             
