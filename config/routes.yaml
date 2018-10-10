@@ -9,7 +9,7 @@ app_lucky_number:
 
 login:
     path: /login
-    controller: App\Controller\LoginController
+    controller: App\Controller\LoginController::form
 # app_menu_item:
 #     path: /menu
 #     controller: App\Controller\MenuItemController
