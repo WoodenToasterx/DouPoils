@@ -2,7 +2,6 @@ index:
    path: /
    controller: App\Controller\MenuItemController
 
-
 app_lucky_number:
     path: /lucky/number
     controller: App\Controller\LuckyController::number
@@ -15,6 +14,9 @@ memberSpace:
     path: /memberSpace
     controller: App\Controller\MemberSpaceController
 
+rendezVous:
+    path: /rendezVous
+    controller: App\Controller\RendezVousController
 
 # app_menu_item:
 #     path: /menu
