@@ -121,9 +121,9 @@ console.log('Hello Webpack Encore');
 /***/ (function(module, exports) {
 
 // assets/js/greet.js
-module.exports = function (name) {
-    return "Yo yo " + name + " - welcome to Encore!";
-};
+// module.exports = function (name) {
+//     return "Yo yo " + name + " - welcome to Encore!";
+// };
 
 /***/ }),
 
