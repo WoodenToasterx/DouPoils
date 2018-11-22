@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class RendezVousController extends Controller
 {
@@ -23,7 +24,13 @@ class RendezVousController extends Controller
     {
         $appointment = new Appointment();
         $form = $this->createFormBuilder($appointment)
+            ->add('MemberName', TextType::class)
+            ->add('MemberFirstName', TextType::class)
             ->add('MemberMail', TextType::class)
+            ->add('TailleChien', TextType::class)
+            ->add('PoilChien', TextType::class)
+            ->add('StartDate', DateType::class)
+            ->add('EndDate', DateType::class)
             ->add('save', SubmitType::class, array('label' => 'Valider', 'attr' =>  array('class' => 'btn btn-primary' )))
             ->getForm();
         
@@ -45,7 +52,8 @@ class RendezVousController extends Controller
 
             if(($appointment->getMemberMail() == "aaa"))
             {
-                $this->addAction($appointment->getMemberMail());
+                return $this->redirectToRoute('rendezVous');
+                //$this->addAction($appointment->getMemberMail());
                 //problem call function to function
             }
             
@@ -53,15 +61,20 @@ class RendezVousController extends Controller
 
         return $this->render('rendez_vous.html.twig', array('form' => $form->createView(),));
     }
+
+    // /**
+    //  * @Route("/rendezVous/{appointment}")
+    //  */
     
-     public function addAction(string $member)
-     {
-        if($member != "aaa")
-        {
-            return $this->redirectToRoute('contact');
-        }
+    //  public function addAction($appointment)
+    //  {
+    //     var_dump($appointment);
+    //     if($appointment == "aaa")
+    //     {
+    //         return $this->redirectToRoute('contact');
+    //     }
         
-        
-     }
+    //     return;
+    //  }
 }
 ?>

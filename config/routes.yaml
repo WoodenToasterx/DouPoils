@@ -18,6 +18,10 @@ rendezVous:
     path: /rendezVous
     controller: App\Controller\RendezVousController
 
+# renvezVous:
+#     path: /rendezVous/{appointment}
+#     controller: App\Controller\RendezVousController
+
 contact:
     path: /contact
     controller: App\Controller\ContactController

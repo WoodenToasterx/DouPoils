@@ -89,11 +89,24 @@
                   </button>
                 </div>
                 <div class="modal-body">
-               {{form_start(form) }}
+               {{form_start(form, {'method': 'POST'}) }}
                   {{ form_errors(form) }}
             
+                  {{ form_widget(form.MemberName, {'attr' : {'class' : 'form-control', 'placeholder' : 'Nom', 'type' : 'email' }}) }}
+                  
+                  {{ form_widget(form.MemberFirstName, {'attr' : {'class' : 'form-control', 'placeholder' : 'Prénom', 'type' : 'email' }}) }}
+                  
                   {{ form_widget(form.MemberMail, {'attr': {'class' : 'form-control', 'placeholder' : 'Email', 'type' : 'email' }}) }}
-              
+
+                  {{ form_widget(form.TailleChien, {'attr' : {'class' : 'form-control', 'placeholder' : 'Taille du chien', 'type' : 'email' }}) }}
+                  
+                  {{ form_widget(form.PoilChien, {'attr' : {'class' : 'form-control', 'placeholder' : 'Type de poil', 'type' : 'email' }}) }}
+                  
+                  {{ form_widget(form.StartDate, {'attr' : {'class' : 'form-control', 'placeholder' : 'Date de rendez vous', 'type' : 'datepicker' }}) }}
+                  
+                  {{ form_widget(form.EndDate, {'attr' : {'class' : 'form-control', 'placeholder' : 'Fin de rendez vous estimé', 'type' : 'datepicker' }}) }}
+
+
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
