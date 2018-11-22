@@ -40,16 +40,17 @@ class LoginController extends AbstractController
         if($form->isSubmitted() && $form->isValid())
         {
             $member = $form->getData();
+            var_dump($member);
 
             try
             {
                 $pdo = PDO::getInstance();
-                $req = $pdo->prepare('SELECT MEMBER_FIRSTNAME 
-                                            ,MEMBER_LASTNAME
+                $req = $pdo->prepare("SELECT MEMBER_FIRSTNAME 
+                                            ,MEMBER_NAME
                                             ,MEMBER_MAIL
                                             ,MEMBER_PASSWORD
                                             FROM doupoils.member
-                                    WHERE MEMBER_MAIL = :MAIL');
+                                    WHERE MEMBER_MAIL = :MAIL");
 
                 $req->bindValue(':MAIL', $member->getMemberMail());
                 $req->execute();
@@ -62,10 +63,11 @@ class LoginController extends AbstractController
 
             if(($member->getMemberMail() == $stmt['MEMBER_MAIL']) && ($member->getPassword() == $stmt['MEMBER_PASSWORD']))
             {
-                $session->set('name', $stmt['MEMBER_LASTNAME']);
+                $session->set('lastname', $stmt['MEMBER_NAME']);
+                $session->set('firstname', $stmt['MEMBER_FIRSTNAME']);
+                $session->set('mail', $stmt['MEMBER_MAIL']);
                 return $this->redirectToRoute('memberSpace');
             }
-            
         }
         return $this->render('login.html.twig', array('form' => $form->createView(),));
 	}

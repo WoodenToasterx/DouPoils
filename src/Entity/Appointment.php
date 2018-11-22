@@ -10,6 +10,7 @@ class Appointment
     protected $tailleChien;
     protected $poilChien;
     protected $startDate;
+    protected $startTime;
     protected $endDate;
 
     public function getMemberMail()
@@ -70,6 +71,15 @@ class Appointment
     public function setStartDate($date)
     {
         $this->startDate = $date;
+    }
+
+    public function getStartTime()
+    {
+        return $this->startTime;
+    }
+    public function setStartTime($time)
+    {
+        $this->startTime = $time;
     }
 
     public function getEndDate()
