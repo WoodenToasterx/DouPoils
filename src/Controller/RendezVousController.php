@@ -22,23 +22,25 @@ class RendezVousController extends Controller
     /**
      * @Route("/rendezVous")
      */
-    use PDO;
+    //use PDO;
     public function rendezVous(Request $request)
     {
         $session=$this->get('session');
-        $pdo = PDO::getInstance();
-        $req = $pdo->prepare('SELECT DISTINCT PRESTATIONTEMPLATE_HAIR
-                              FROM doupoils.prestationtemplate;');
+        // $pdo = PDO::getInstance();
+        // $req = $pdo->prepare('SELECT DISTINCT PRESTATIONTEMPLATE_HAIR
+        //                       FROM doupoils.prestationtemplate;');
 
-        $req->execute();
-        $stmt = $req->fetchAll($pdo::FETCH_ASSOC);
+        // $req->execute();
+        // $stmt = $req->fetchAll($pdo::FETCH_ASSOC);
+
+        $entityManager = $this->getDoctrine()->getManager();
 
         $appointment = new Appointment();
         $form = $this->createFormBuilder($appointment)
             ->add('MemberName', TextType::class)
-            ->add('MemberFirstName', TextType::class)
             ->add('MemberMail', TextType::class)
-            ->add('TailleChien', ChoiceType::class, array(
+            ->add('MemberFirstName', TextType::class)
+            ->add('prestationtemplateHair', ChoiceType::class, array(
                 'choices' => array(
                     'Très petit' => 1,
                     'Petit' => 2,
@@ -47,25 +49,18 @@ class RendezVousController extends Controller
                     'Très grand' => 5,
                 ),
             ))
-            ->add('PoilChien', ChoiceType::class, array(
-                'choices' => array(
-                    'Poil Raz' => 1,
-                    'Poil mi-long' => 2,
-                    'Poil Long' => 3,
-                ),
-            ))
-            ->add('StartDate', DateTimeType::class, array(
+            
+            ->add('appointmentStart', DateTimeType::class, array(
                 'widget'=> 'single_text',
                 'format' => 'dd-MM-yyyy',
-                'input' => 'datetime',
-                'attr'=>array('class'=>'datetimepicker',
-            )))
-            ->add('StartTime', TimeType::class, array(
-                'widget' => 'choice',
-                'input' => 'string',
-                'view_timezone' => 'Europe/Paris',
-                'placeholder' => 'Heure de rendez-vous',
+                'input' => 'timestamp',
             ))
+            // ->add('appointmentStart', TimeType::class, array(
+            //     'widget' => 'choice',
+            //     'input' => 'string',
+            //     'view_timezone' => 'Europe/Paris',
+            //     'placeholder' => 'Heure de rendez-vous',
+            // ))
             ->add('save', SubmitType::class, array('label' => 'Valider', 'attr' =>  array('class' => 'btn btn-primary' )))
             ->getForm();
         
@@ -78,7 +73,7 @@ class RendezVousController extends Controller
 
             try
             {
-                if(($session != null && $appointment->getMemberMail() == $session->get('mail')))
+                if(($session != null && $appointment->getMember()->getMemberMail() == $session->get('mail')))
                 {
                     $pdo->beginTransaction();
                     $req = $pdo->prepare("INSERT INTO doupoils.appointment(
