@@ -11,32 +11,57 @@
         <script src="{{ asset('build/js/fullcalendar.min.js') }}"></script>
         <script src="{{ asset('build/js/fullcalendarfr.js') }}"></script>
         <script>
+
+        $(function () {
+          $('#calendar-holder').fullCalendar({
+              header: {
+                  left: 'prev, next, today',
+                  center: 'title',
+                  right: 'month, basicWeek, basicDay'
+              },
+              locale: 'fr',
+              lazyFetching: true,
+              navLinks: true,
+              eventSources: [
+                  {
+                      url: '/fc-load-events',
+                      type: 'POST',
+                      data: {
+                          filters: {}
+                      },
+                      error: function () {
+                          alert('There was an error while fetching FullCalendar!');
+                      }
+                  }
+              ]
+          });
+      });
+        {# $(document).ready(function() {
+
+          $('#calendar').fullCalendar({
+            defaultDate: Date.now(),
+            locale: 'fr',
+            navLinks: true, 
+            editable: true,
+            eventLimit: true,
+            header: {
+              left: 'prev,next today',
+              center: 'title',
+              right: 'month,agendaWeek,agendaDay'
+            }, 
+            events: [
+              {
+                title: 'Dinner',
+                start: '2018-11-10T20:00:00'
+              }
+            ]
+          });
+          
+        });
+
         $(document).ready(function() {
-
-    $('#calendar').fullCalendar({
-      defaultDate: Date.now(),
-      locale: 'fr',
-      navLinks: true, 
-      editable: true,
-      eventLimit: true,
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'month,agendaWeek,agendaDay'
-      }, 
-      events: [
-        {
-          title: 'Dinner',
-          start: '2018-11-10T20:00:00'
-        }
-      ]
-    });
-    
-  });
-
-  $(document).ready(function() {
-     $('#ModalRDV').modal('show');
-  });
+          $('#ModalRDV').modal('show');
+        }); #}
 
       {# function PrendreRDV() {
           var dateStr = prompt('Enter a date in YYYY-MM-DD format');
@@ -55,17 +80,16 @@
       </script>
         <style>
         
-
-      #calendar {
-        max-width: 900px;
-        margin: 0 auto;
-      }
-      #position {
-        margin: 25px;
-      }
-      .btn {
-      margin: 20px;
-      }
+          #calendar-holder {
+            max-width: 900px;
+            margin: 0 auto;
+          }
+          #position {
+            margin: 25px;
+          }
+          .btn {
+          margin: 20px;
+          }
     </style>
     <meta charset='utf-8' />
     </head>
@@ -73,7 +97,10 @@
     <body class="position-relative">
         {% include 'header_base.html.twig' %}
         <div id="position">
-          <div id='calendar'></div>
+
+          
+          {% include '@FullCalendarBundle/calendar.html.twig' %}
+          
 
           <!-- Button trigger modal -->
           <div class="text-center">
