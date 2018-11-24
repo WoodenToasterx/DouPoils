@@ -42,35 +42,35 @@ class Prestationtemplate
     /**
      * @var string
      *
-     * @ORM\Column(name="PRESTATIONTEMPLATE_HYGIENE", type="decimal", precision=10, scale=2, nullable=false)
+     * @ORM\Column(name="PRESTATIONTEMPLATE_HYGIENE", type="integer", nullable=false)
      */
     private $prestationtemplateHygiene;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="PRESTATIONTEMPLATE_DISENTANGLING", type="decimal", precision=10, scale=2, nullable=false)
+     * @ORM\Column(name="PRESTATIONTEMPLATE_DISENTANGLING", type="integer", nullable=false)
      */
     private $prestationtemplateDisentangling;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="PRESTATIONTEMPLATE_SHAMPOO", type="decimal", precision=10, scale=2, nullable=false)
+     * @ORM\Column(name="PRESTATIONTEMPLATE_SHAMPOO", type="integer", nullable=false)
      */
     private $prestationtemplateShampoo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="PRESTATIONTEMPLATE_DRYING", type="decimal", precision=10, scale=2, nullable=false)
+     * @ORM\Column(name="PRESTATIONTEMPLATE_DRYING", type="integer", nullable=false)
      */
     private $prestationtemplateDrying;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="PRESTATIONTEMPLATE_PRICE", type="decimal", precision=10, scale=2, nullable=false)
+     * @ORM\Column(name="PRESTATIONTEMPLATE_PRICE", type="integer", nullable=false)
      */
     private $prestationtemplatePrice;
 

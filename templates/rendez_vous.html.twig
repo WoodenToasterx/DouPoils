@@ -17,11 +17,14 @@
               header: {
                   left: 'prev, next, today',
                   center: 'title',
-                  right: 'month, basicWeek, basicDay'
+                  right: 'month,agendaWeek,agendaDay'
               },
               locale: 'fr',
+              nowIndicator: true,
               lazyFetching: true,
+              fixedWeekCount: false,
               navLinks: true,
+              timeFormat: 'H(:mm)',
               eventSources: [
                   {
                       url: '/fc-load-events',
@@ -36,47 +39,11 @@
               ]
           });
       });
-        {# $(document).ready(function() {
 
-          $('#calendar').fullCalendar({
-            defaultDate: Date.now(),
-            locale: 'fr',
-            navLinks: true, 
-            editable: true,
-            eventLimit: true,
-            header: {
-              left: 'prev,next today',
-              center: 'title',
-              right: 'month,agendaWeek,agendaDay'
-            }, 
-            events: [
-              {
-                title: 'Dinner',
-                start: '2018-11-10T20:00:00'
-              }
-            ]
-          });
-          
-        });
+      {# $(document).ready(function() {
+        $('#ModalRDV').modal('show');
+      });  #}
 
-        $(document).ready(function() {
-          $('#ModalRDV').modal('show');
-        }); #}
-
-      {# function PrendreRDV() {
-          var dateStr = prompt('Enter a date in YYYY-MM-DD format');
-          var date = moment(dateStr);
-          if (date.isValid()) {
-            $('#calendar').fullCalendar('renderEvent', {
-              title: 'dynamic event',
-              start: date,
-              allDay: true
-            });
-            alert('Great. Now, update your database...');
-          } else {
-            alert('Invalid date.');
-          }
-      }; #}
       </script>
         <style>
         
@@ -93,7 +60,6 @@
     </style>
     <meta charset='utf-8' />
     </head>
-
     <body class="position-relative">
         {% include 'header_base.html.twig' %}
         <div id="position">
@@ -101,7 +67,6 @@
           
           {% include '@FullCalendarBundle/calendar.html.twig' %}
           
-
           <!-- Button trigger modal -->
           <div class="text-center">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalRDV">Prendre rendez-vous</button>

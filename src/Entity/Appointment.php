@@ -35,14 +35,14 @@ class Appointment
     /**
      * @var string
      *
-     * @ORM\Column(name="APPOINTMENT_DURATION", type="decimal", precision=10, scale=2, nullable=false)
+     * @ORM\Column(name="APPOINTMENT_DURATION", type="integer", nullable=false)
      */
     private $appointmentDuration;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="APPOINTMENT_PRICE", type="decimal", precision=10, scale=2, nullable=false)
+     * @ORM\Column(name="APPOINTMENT_PRICE", type="integer", nullable=false)
      */
     private $appointmentPrice;
 
