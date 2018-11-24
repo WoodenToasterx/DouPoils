@@ -79,14 +79,33 @@ class Prestationtemplate
         return $this->prestationtemplateHair;
     }
 
+    public function setPrestationtemplateHair($prestationHair)
+    {
+        $this->prestationtemplateHair = $prestationHair;
+        return $this;
+    }
+
     public function getPrestationtemplateSize(): ?string
     {
         return $this->prestationtemplateSize;
+        
+    }
+
+    public function setPrestationtemplateSize($size)
+    {
+        $this->prestationtemplateSize = $size;
+        return $this;
     }
 
     public function getPrestationtemplateVersion(): ?int
     {
         return $this->prestationtemplateVersion;
+    }
+
+    public function setPrestationtemplateVersion($version)
+    {
+        $this->prestationtemplateVersion = $version;
+        return $this;
     }
 
     public function getPrestationtemplateHygiene()
@@ -148,7 +167,5 @@ class Prestationtemplate
 
         return $this;
     }
-
-
 }
 ?>

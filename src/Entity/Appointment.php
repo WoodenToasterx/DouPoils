@@ -28,9 +28,9 @@ class Appointment
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="APPOINTMENT_START", type="datetime", nullable=false)
+     * @ORM\Column(name="APPOINTMENT_START", type="string", nullable=false)
      */
-    private $appointmentStart;
+    public $appointmentStart;
 
     /**
      * @var string
@@ -70,7 +70,11 @@ class Appointment
      *   @ORM\JoinColumn(name="PRESTATIONTEMPLATE_VERSION", referencedColumnName="PRESTATIONTEMPLATE_VERSION")
      * })
      */
-    private $prestationtemplateHair;
+    private $prestationtemplate;
+
+    private $prestationTemplateSize;
+    private $prestationTemplateHair;
+    private $prestationTemplateVersion;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -101,22 +105,14 @@ class Appointment
         return $this->appointmentId;
     }
 
-    public function getAppointmentStart(): ?DateTime
+    public function getAppointmentStart()
     {
         return $this->appointmentStart;
     }
 
-    public function setAppointmentStart(\DateTime $appointmentStart): self
+    public function setAppointmentStart($appointmentStart)
     {
-        if($this->appointmentStart instanceof \DateTime)
-        {
-            $this->appointementStart = $appointmentStart;
-        }
-        else
-        {
-            $date = new \DateTime($appointmentStart);
-            $this->appointmentStart = $date;
-        }
+        $this->appointmentStart = $appointmentStart;
         return $this;
     }
 
@@ -186,14 +182,39 @@ class Appointment
         $this->memberMail = $mail;
     }
 
-    public function getPrestationtemplateHair(): ?Prestationtemplate
+    public function getPrestationtemplateHair()
     {
-        return $this->prestationtemplateHair;
+        return $this->prestationTemplateHair;
     }
 
-    public function setPrestationtemplateHair(?Prestationtemplate $prestationtemplateHair): self
+    public function setPrestationTemplateHair($hair)
     {
-        $this->prestationtemplateHair = $prestationtemplateHair;
+        $this->prestationTemplateHair = $hair;
+    }
+
+    public function getPrestationTemplateSize()
+    {
+        return $this->prestationTemplateSize;
+    }
+
+    public function setPrestationTemplateSize($size)
+    {
+        $this->prestationTemplateHair = $size;
+    }
+
+    public function getPrestationTemplateVersion()
+    {
+        return $this->prestationTemplateVersion;
+    }
+
+    public function setPrestationTemplateVersion($version)
+    {
+        $this->prestationTemplateVersion = $version;
+    }
+
+    public function setPrestationtemplate(?Prestationtemplate $prestationtemplate): self
+    {
+        $this->prestationtemplate = $prestationtemplate;
 
         return $this;
     }
@@ -223,5 +244,5 @@ class Appointment
 
         return $this;
     }
-
 }
+?>
