@@ -1,59 +1,46 @@
 <html>
     <head>
-        
         <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('build/css/custom.scss') }}">
-
     </head>
+    {% include 'header_base.html.twig' %}
+
     <body class="position-relative">
-     {% include 'header_base.html.twig' %}
-    <div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="well well-sm">
-                <form class="form-horizontal" method="post">
-                    <fieldset>
-                        <legend class="text-center header">Contact us</legend>
-                        <div class="form-group">
-                            <div class="col-md-10 col-md-offset-1">
-                                <input id="fname" name="name" type="text" placeholder="First Name" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-10 col-md-offset-1">
-                                <input id="lname" name="name" type="text" placeholder="Last Name" class="form-control">
-                            </div>
+
+        <div class="container">
+
+            <div class="text-center contactTwig">
+                <span>Dou'poils <br/>
+                25 rue de la Couronne <br/>
+                68730 Blotzheim <br/>
+                06 66 66 66 66
+                </span>
+            </div>
+
+            <div class="row contactTwig">
+                <div class="col">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1345.2038813135791!2d7.491829258312944!3d47.59876039479607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4791bdd544e843bb%3A0x319e293ae8d0d2c1!2sRue+de+la+Couronne%2C+68730+Blotzheim!5e0!3m2!1sfr!2sfr!4v1546419361066" width="600" height="450" frameborder="0" style="border:0" allowfullscreen ></iframe>
+                </div>
+                <div class="col">
+                    {{ form_start(form, {'method': 'POST'}) }}
+                        {{ form_errors(form) }}
+                    
+                        <div class="formControlContact">
+                            {{ form_widget(form.Name, {'attr' : {'class' : 'form-control', 'placeholder' : 'Nom', 'type' : 'email' }}) }}
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-md-10 col-md-offset-1">
-                                <input id="email" name="email" type="text" placeholder="Email Address" class="form-control">
-                            </div>
+                        <div class="formControlContact">
+                            {{ form_widget(form.Email, {'attr' : {'class' : 'form-control', 'placeholder' : 'Email', 'type' : 'email' }}) }}
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-md-10 col-md-offset-1">
-                                <input id="phone" name="phone" type="text" placeholder="Phone" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-10 col-md-offset-1">
-                                <textarea class="form-control" id="message" name="message" placeholder="Enter your massage for us here. We will get back to you within 2 business days." rows="7"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-                            </div>
-                        </div>
-                    </fieldset>
-                </form>
+                        <div class="formControlContact">
+                            {{ form_widget(form.Message, {'attr': {'class' : 'form-control', 'placeholder' : 'Message', 'type' : 'TextareaType' }}) }}
+                        </div>       
+                    {{ form_end(form, {'attr' : { 'class' : 'btn btn-primary' }}) }}
+                </div>
             </div>
         </div>
-    </div>
-</div>
+
+    </body>
     {% include 'footer.html.twig' %}
-</body>
 </html>
