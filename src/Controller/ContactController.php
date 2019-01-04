@@ -18,11 +18,10 @@ class ContactController extends AbstractController
      * @Route("/contact")
      */
 
-    public function contact(Request $request)
+    public function contact(Request $request, \Swift_Mailer $mailer)
     {
         $session=$this->get('session');
 
-        $entityManager = $this->getDoctrine()->getManager();
         $defaultData = array('message' => 'Type your message');
 
         $form = $this->createFormBuilder($defaultData)
@@ -41,7 +40,14 @@ class ContactController extends AbstractController
 
             try
             {
-                
+                $message = (new \Swift_Message('Hello Email'))
+                ->setFrom([$contacter['Email'] => $contacter['Name']])
+                ->setTo('example@gmail.com')
+                ->setBody($contacter['Message']);
+
+                $mailer->send($message);
+
+                return $this->redirectToRoute('contact');
             }
             catch(Exception $e)
             {
