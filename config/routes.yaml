@@ -25,6 +25,14 @@ contact:
     path: /contact
     controller: App\Controller\ContactController
 
+mentionlegale:
+    path: /mentionlegale
+    controller: App\Controller\MentionLegaleController
+
+prestation:
+    path: /prestation
+    controller: App\Controller\PrestationController
+
 # app_menu_item:
 #     path: /menu
 #     controller: App\Controller\MenuItemController

@@ -28,7 +28,7 @@ class ContactController extends AbstractController
             ->add('Name', TextType::class)
             ->add('Email', TextType::class)
             ->add('Message', TextareaType::class)
-            ->add('Save', SubmitType::class, array('label' => 'Valider', 'attr' =>  array('class' => 'btn btn-primary' )))
+            ->add('Save', SubmitType::class)
             ->getForm();
         
         

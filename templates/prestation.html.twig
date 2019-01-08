@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('build/css/custom.scss') }}">
+
+    </head>
+    {% include 'header_base.html.twig' %}
+    <body class="position-relative">
+
+        <div class="container marketing">
+            <hr class="featurette-divider">
+            <div class="row featurette">
+            <h2> POIL RAS </h2>
+                <div class="container">
+                    <div class="row">
+                    {% for prestation in prestationList %}
+                        {% if prestation.prestationtemplateHair == "RAS" %}
+                        <div class="col-sm">
+                            <div class="card bg-light mb-3">
+                            <div class="card-header text-center"> {{prestation.prestationtemplateSize }} </div>
+                                <div class="card-body">
+                                <p class="card-text">Hygiène : {{ prestation.prestationtemplateHygiene }} mn<br/>
+                                Shampoing : {{ prestation.prestationtemplateShampoo }} mn<br />
+                                Séchage : {{ prestation.prestationtemplateDrying }} mn<br />
+                                </p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+            <div class="row featurette">
+                <h2> POIL MI-LONG </h2>
+                <div class="container">
+                    <div class="row">
+                    {% for prestation in prestationList %}
+                        {% if prestation.prestationtemplateHair == "MILONG" %}
+                        <div class="col-sm">
+                            <div class="card bg-light mb-3">
+                            <div class="card-header text-center"> {{prestation.prestationtemplateSize }} </div>
+                                <div class="card-body">
+                                <p class="card-text">Hygiène : {{ prestation.prestationtemplateHygiene }} mn<br/>
+                                Démelage : {{ prestation.prestationtemplateDisentangling }} mn<br />
+                                Shampoing : {{ prestation.prestationtemplateShampoo }} mn<br />
+                                Séchage : {{ prestation.prestationtemplateDrying }} mn<br />
+                                </p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+            <div class="row featurette">
+            <h2> POIL LONG </h2>
+                <div class="container">
+                    <div class="row">
+                    {% for prestation in prestationList %}
+                        {% if prestation.prestationtemplateHair == "LONG" %}
+                        <div class="col-sm">
+                            <div class="card bg-light mb-3">
+                            <div class="card-header text-center"> {{prestation.prestationtemplateSize }} </div>
+                                <div class="card-body">
+                                <p class="card-text">Hygiène : {{ prestation.prestationtemplateHygiene }} mn<br/>
+                                Démelage : {{ prestation.prestationtemplateDisentangling }} mn<br />
+                                Shampoing : {{ prestation.prestationtemplateShampoo }} mn<br />
+                                Séchage : {{ prestation.prestationtemplateDrying }} mn<br />
+                                </p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <hr class="featurette-divider">
+
+        </div>
+
+    </body>
+    {% include 'footer.html.twig' %}
+</html>
