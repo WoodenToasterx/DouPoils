@@ -1,8 +1,6 @@
 <html>
     <head>
-        <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
-        <link rel="stylesheet" href="{{ asset('build/css/custom.scss') }}">
-
+    {% include 'script.html.twig' %}
     </head>
     {% include 'header_base.html.twig' %}
     <body class="position-relative">
@@ -22,6 +20,7 @@
                                 <p class="card-text">Hygiène : {{ prestation.prestationtemplateHygiene }} mn<br/>
                                 Shampoing : {{ prestation.prestationtemplateShampoo }} mn<br />
                                 Séchage : {{ prestation.prestationtemplateDrying }} mn<br />
+                                Prix : {{ prestation.prestationtemplatePrice }} €<br />
                                 </p>
                                 </div>
                             </div>
@@ -47,6 +46,7 @@
                                 Démelage : {{ prestation.prestationtemplateDisentangling }} mn<br />
                                 Shampoing : {{ prestation.prestationtemplateShampoo }} mn<br />
                                 Séchage : {{ prestation.prestationtemplateDrying }} mn<br />
+                                Prix : {{ prestation.prestationtemplatePrice }} €<br />
                                 </p>
                                 </div>
                             </div>
@@ -72,6 +72,7 @@
                                 Démelage : {{ prestation.prestationtemplateDisentangling }} mn<br />
                                 Shampoing : {{ prestation.prestationtemplateShampoo }} mn<br />
                                 Séchage : {{ prestation.prestationtemplateDrying }} mn<br />
+                                Prix : {{ prestation.prestationtemplatePrice }} €<br />
                                 </p>
                                 </div>
                             </div>

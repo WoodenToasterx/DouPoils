@@ -54,7 +54,7 @@ class RendezVousController extends Controller
                 ),
             ))
             ->add('appointmentStart', TextType::class)
-            ->add('save', SubmitType::class, array('label' => 'Valider', 'attr' =>  array('class' => 'btn btn-primary' )))
+            ->add('save', SubmitType::class)
             ->getForm();
         
         

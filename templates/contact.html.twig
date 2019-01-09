@@ -1,10 +1,8 @@
 <html>
     <head>
-        <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
-        <link rel="stylesheet" href="{{ asset('build/css/custom.scss') }}">
+    {% include 'script.html.twig' %}
     </head>
     {% include 'header_base.html.twig' %}
-
     <body class="position-relative">
         <div class="container">
             <div class="text-center contactTwig">
@@ -36,7 +34,7 @@
                         </div>      
                         
                         <div class="formControlContact center-block">
-                            {{ form_widget(form.Save, {'attr': {'class' : 'form-control text-center btn-primary', 'placeholder' : 'Message', 'type' : 'TextareaType' }}) }}
+                            {{ form_widget(form.Save, {'attr': {'class' : 'form-control text-center btn-primary', 'type' : 'submit' }, 'label' : 'Envoyer' }) }}
                         </div>
                     {{ form_end(form, {'attr' : { 'class' : 'btn btn-primary' }}) }}
                 </div>

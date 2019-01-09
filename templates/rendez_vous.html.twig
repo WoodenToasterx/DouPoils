@@ -1,76 +1,58 @@
 <html>
     <head>
-        <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
-        <link rel="stylesheet" href="{{ asset('build/css/custom.scss') }}">
-        <link rel="stylesheet" href="{{ asset('build/css/fullcalendar.print.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('build/css/fullcalendar.min.css') }}">
-        <script src="{{ asset('build/js/moment.min.js') }}"></script>
-        <script src="{{ asset('build/js/app.js') }}"></script>
-
-        <script src="{{ asset('build/js/jquery.min.js') }}"></script>
-        <script src="{{ asset('build/js/fullcalendar.min.js') }}"></script>
-        <script src="{{ asset('build/js/fullcalendarfr.js') }}"></script>
-        <script>
-
-        $(function () {
-          $('#calendar-holder').fullCalendar({
-              header: {
-                  left: 'prev, next, today',
-                  center: 'title',
-                  right: 'month,agendaWeek,agendaDay'
-              },
-              locale: 'fr',
-              nowIndicator: true,
-              lazyFetching: true,
-              fixedWeekCount: false,
-              navLinks: true,
-              timeFormat: 'H(:mm)',
-              eventSources: [
-                  {
-                      url: '/fc-load-events',
-                      type: 'POST',
-                      data: {
-                          filters: {}
-                      },
-                      error: function () {
-                          alert('There was an error while fetching FullCalendar!');
-                      }
-                  }
-              ]
-          });
-      });
-
-      {# $(document).ready(function() {
-        $('#ModalRDV').modal('show');
-      });  #}
-
-      </script>
-        <style>
-        
-          #calendar-holder {
-            max-width: 900px;
-            margin: 0 auto;
-          }
-          #position {
-            margin: 25px;
-          }
-          .btn {
-          margin: 20px;
-          }
+    {% include 'script.html.twig' %}
+    <style>
+        #calendar-holder {
+          max-width: 900px;
+          margin: 0 auto;
+        }
+        #position {
+          margin: 25px;
+        }
+        .btnRDV {
+        margin-top: 20px;
+        }
     </style>
+    <script type="text/javascript">
+      $(function () {
+        $('#calendar-holder').fullCalendar({
+            header: {
+                left: 'prev, next, today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            locale: 'fr',
+            nowIndicator: true,
+            lazyFetching: true,
+            fixedWeekCount: false,
+            navLinks: true,
+            timeFormat: 'H(:mm)',
+            eventSources: [
+                {
+                    url: '/fc-load-events',
+                    type: 'POST',
+                    data: {
+                        filters: {}
+                    },
+                    error: function () {
+                        alert('There was an error while fetching FullCalendar!');
+                    }
+                }
+            ]
+        });
+      });
+      </script>
     <meta charset='utf-8' />
     </head>
     {% include 'header_base.html.twig' %}
     <body class="position-relative">
         
-        <div id="position">
-
-          
+        <div id="position">          
           {% include '@FullCalendarBundle/calendar.html.twig' %}
           
           <!-- Button trigger modal -->
           <div class="text-center">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalRDV">Prendre rendez-vous</button>
+            <button type="button" class="btn btn-primary btnRDV" data-toggle="modal" data-target="#ModalRDV">Prendre rendez-vous</button>
           </div>
 
           <!-- Modal -->
@@ -113,13 +95,14 @@
 
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                      <button type="button" class="btn btn-secondary btnRDV" data-dismiss="modal">Fermer</button>
+                      {{ form_widget(form.save, {'attr':{ 'class' : 'btn btn-primary btnRDV'}, 'label' : 'Valider' }) }}
                       {{ form_end(form, {'attr' : { 'class' : 'btn btn-primary' }}) }}
                     </div>
                 </div>
             </div>
           </div>
-</div>
+        </div>
     </body>
             {% include 'footer.html.twig' %}
 </html>

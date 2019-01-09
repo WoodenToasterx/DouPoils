@@ -1,41 +1,64 @@
 <div>
-  <div>
+  <div class="header-complet">
       <div class="container">
           <header class="page-header">
-              <div class="row flex-nowrap justify-content-between align-items-center">
+              <div class="row justify-content-between align-items-center">
+                  <img src="{{ asset('build/img/doupoilslogo.png') }}" width="130" height="65" alt="logo" class="logo"/>
                   <div class="text-center">
-                      <h1 class="blog-header-logo text-dark" href="{{ path('index') }}">Dou'poils</h1>
+                    <h1 class="pull-right text-center" href="{{ path('index') }}">Dou'poils</h1>
                   </div>
                   <div class="d-flex justify-content-end align-items-center">
-                      <a class="btn btn-sm btn-outline-secondary boutonCreation" href="#">Créer un compte</a>
-                      <a class="btn btn-sm btn-outline-secondary" href="{{ path('login') }}">Se connecter</a>
+                    <a class="btn btn-sm btn-outline-secondary boutonCreation" href="#">Créer un compte</a>
+                    <a class="btn btn-sm btn-outline-secondary" href="{{ path('login') }}">Se connecter</a>
                   </div>
               </div>
           </header>
       </div>
   </div>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <nav class="navbar navbar-expand-lg">
     <div class="collapse navbar-collapse justify-content-md-center">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('index') }}">Accueil</a>
+        <li id="accueil">
+          <a class="nav-link"  href="{{ path('index') }}">Accueil</a>
         </li>
-        <li class="nav-item">
+        <li id="prestation" >
           <a class="nav-link" href="{{ path('prestation') }}">Prestation</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Article</a>
+        <li id="articles">
+          <a class="nav-link"  href="#">Article</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Galerie</a>
+        <li id="galerie">
+          <a class="nav-link"  href="#">Galerie</a>
         </li>
-        <li class="nav-item">
+        <li id="rdv">
           <a class="nav-link"  href="{{ path('rendezVous') }}">Rendez-vous</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('contact') }} ">Contact</a>
+        <li id="contact">
+          <a class="nav-link"  href="{{ path('contact') }} ">Contact</a>
         </li>
       </ul>
-    </div>
   </nav>
 <div>
+<script type="text/javascript">
+switch (window.location.pathname) {
+    case '/':
+        $('#accueil').addClass('active')
+        break;
+    case '/prestation':
+        $('#prestation').addClass('active')
+        break;
+    case '/article':
+        $('#articles').addClass('active')
+        break;       
+    case '/galerie':
+        $('#galerie').addClass('active')
+        break;
+    case '/rendezVous':
+        $('#rdv').addClass('active')
+        break;
+    case '/contact':
+        $('#contact').addClass('active')
+        break;
+}
+</script>
