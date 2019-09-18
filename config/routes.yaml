@@ -17,10 +17,6 @@ rendezVous:
 toiba_fullcalendar:
     resource: "@FullCalendarBundle/Resources/config/routing.yaml"
 
-# renvezVous:
-#     path: /rendezVous/{appointment}
-#     controller: App\Controller\RendezVousController
-
 contact:
     path: /contact
     controller: App\Controller\ContactController
@@ -33,6 +29,19 @@ prestation:
     path: /prestation
     controller: App\Controller\PrestationController
 
+article:
+    path: /article
+    controller: App\Controller\ArticleController
+
+galerie:
+    path: /galerie
+    controller: App\Controller\GalerieController
+
 # app_menu_item:
 #     path: /menu
 #     controller: App\Controller\MenuItemController
+
+
+# renvezVous:
+#     path: /rendezVous/{appointment}
+#     controller: App\Controller\RendezVousController
